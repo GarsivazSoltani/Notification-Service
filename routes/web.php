@@ -1,5 +1,7 @@
 <?php
 
+use App\Mail\TopicCreated;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    Mail::to('garsi.soltani@gmail.com')->send(new TopicCreated);
+    // return view('welcome');
 });
