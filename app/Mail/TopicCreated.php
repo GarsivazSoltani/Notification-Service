@@ -12,13 +12,16 @@ use Illuminate\Queue\SerializesModels;
 class TopicCreated extends Mailable
 {
     use Queueable, SerializesModels;
+    private $first_name;
+    private $last_name;
 
     /**
      * Create a new message instance.
      */
     public function __construct()
     {
-        //
+        $this->first_name = 'Garsivaz';
+        $this->last_name = 'Solatni';
     }
 
     /**
@@ -38,8 +41,13 @@ class TopicCreated extends Mailable
     {
         return new Content(
             view: 'emails.topic-created',
+            with: [
+                'full_name' => $this->first_name . ' ' . $this->last_name,
+            ],
         );
     }
+
+    // 'full_name' => $this->first_name . ' ' . $this->last_name
 
     /**
      * Get the attachments for the message.
