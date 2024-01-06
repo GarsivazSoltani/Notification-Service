@@ -1,6 +1,7 @@
 <?php
 
 use App\Mail\TopicCreated;
+use App\Mail\UserRegistered;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    Mail::to('garsi.soltani@gmail.com')->send(new TopicCreated);
+    Mail::to('garsi.soltani@gmail.com')->send(new UserRegistered);
     // return view('welcome');
 });
