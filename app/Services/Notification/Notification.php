@@ -16,8 +16,8 @@ class Notification
         $client = new Client();
         // dd($options);
 
-        $response = $client->post(config('services.sms.uri'), $this->prepareDataForSms($user, $text));
-        return $response->getBody();
+        // $response = $client->post(config('services.sms.uri'), $this->prepareDataForSms($user, $text));
+        // return $response->getBody();
     }
 
     private function prepareDataForSms(User $user, String $text) {
