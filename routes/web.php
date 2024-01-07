@@ -2,8 +2,10 @@
 
 use App\Mail\TopicCreated;
 use App\Mail\UserRegistered;
+use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use App\Services\Notification\Notification;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    Mail::to('garsi.soltani@gmail.com')->send(new TopicCreated);
+    // Mail::to('garsi.soltani@gmail.com')->send(new TopicCreated);
+    $notification = resolve(Notification::class);
+    $notification->sendEmail(User::find(1), new TopicCreated);
     // return view('welcome');
 });
