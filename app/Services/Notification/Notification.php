@@ -2,35 +2,31 @@
 namespace App\Services\Notification;
 
 use App\Models\User;
+use App\Services\Notification\Providers\EmailProvider;
+use App\Services\Notification\Providers\SmsProvider;
 use GuzzleHttp\Client;
 use Illuminate\Mail\Mailable;
 use Illuminate\Support\Facades\Mail;
 
 class Notification
 {
-    public function sendEmail(User $user, Mailable $mailable) {
-        return Mail::to($user)->send($mailable);
-    }
+    // public function sendEmail(User $user, Mailable $mailable)
+    // {
+    //     $emailProvider = new EmailProvider();
+    //     return $emailProvider->send($user, $mailable);
+    // }
 
-    public function sendSms(User $user, String $text){
-        $client = new Client();
-        // dd($options);
+    // public function sendSms(User $user, String $text)
+    // {
+    //     $smsProvider = new SmsProvider();
+    //     return $smsProvider->send($user, $text);
+    // }
 
-        // $response = $client->post(config('services.sms.uri'), $this->prepareDataForSms($user, $text));
-        // return $response->getBody();
-    }
-
-    private function prepareDataForSms(User $user, String $text) {
-        $data =
-            array_merge(
-                config('services.sms.auth'),
-                [
-                    'op' => 'send',
-                    'message' => $text,
-                    'to' => [$user->phone_number],
-                ]
-            );
-        
-        return ['json' => $data];
+    public function __call($method, $args)
+    {
+        $providerPath = __NAMESPACE__ . '\Providers\\' . substr($method, 4) . 'Provider';
+        $providerInstancs = new $providerPath;
+        $providerInstancs->send(...$args);
+        dd(...$args);
     }
 }
