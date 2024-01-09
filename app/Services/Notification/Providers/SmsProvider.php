@@ -2,29 +2,37 @@
 namespace App\Services\Notification\Providers;
 
 use App\Models\User;
+use App\Services\Notification\Providers\Contracts\Provider;
 use GuzzleHttp\Client;
-use Illuminate\Support\Facades\Mail;
 
-class SmsProvider
+class SmsProvider implements Provider
 {
-  public function send(User $user, String $text)
+  private $user;
+  private $text;
+
+  public function __construct(User $user, String $text)
+  {
+    $this->user = $user;
+    $this->text = $text;
+  }
+
+  public function send()
   {
     $client = new Client();
-    dd($this->prepareDataForSms($user, $text));
 
-    $response = $client->post(config('services.sms.uri'), $this->prepareDataForSms($user, $text));
+    $response = $client->post(config('services.sms.uri'), $this->prepareDataForSms());
     return $response->getBody();
   }
 
-  private function prepareDataForSms(User $user, String $text)
+  private function prepareDataForSms()
   {
     $data =
         array_merge(
             config('services.sms.auth'),
             [
                 'op' => 'send',
-                'message' => $text,
-                'to' => [$user->phone_number],
+                'message' => $this->text,
+                'to' => [$this->user->phone_number],
             ]
         );
     

@@ -2,13 +2,21 @@
 namespace App\Services\Notification\Providers;
 
 use App\Models\User;
+use App\Services\Notification\Providers\Contracts\Provider;
 use Illuminate\Mail\Mailable;
 use Illuminate\Support\Facades\Mail;
 
-class EmailProvider
+class EmailProvider implements Provider
 {
-  public function send(User $user, Mailable $mailable)
+  private $user;
+  private $mailable;
+
+  public function __construct(User $user, Mailable $mailable) {
+    $this->user = $user;
+    $this->mailable = $mailable;
+  }
+  public function send()
   {
-    return Mail::to($user)->send($mailable);
+    return Mail::to($this->user)->send($this->mailable);
   }
 }
