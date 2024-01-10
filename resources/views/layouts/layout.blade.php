@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{{asset('css/bootstraprtl-v4.css')}}">
+  <link rel="stylesheet" href="{{asset('css/style.css')}}">
+  <script src="{{asset('js/app.js')}}"></script>
   <title>@yield('title')</title>
 </head>
 <body>
@@ -25,8 +28,8 @@
                     اطلاع رسانی
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{route('notification.form.email')}}">ارسال ایمیل</a>
-                    <a class="dropdown-item" href="{{route('notification.form.sms')}}">ارسال پیام کوتاه</a>
+                    <a class="dropdown-item" href="#">ارسال ایمیل</a>
+                    <a class="dropdown-item" href="#">ارسال پیام کوتاه</a>
                 </div>
             </li>
     </div>
