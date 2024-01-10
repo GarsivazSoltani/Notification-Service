@@ -19,9 +19,15 @@ use App\Services\Notification\Notification;
 */
 
 Route::get('/', function () {
-    // Mail::to('garsi.soltani@gmail.com')->send(new TopicCreated);
+    return view('home');
+});
+
+Route::get('/email', function () {
     $notification = resolve(Notification::class);
     $notification->sendEmail(User::find(1), new TopicCreated);
-    // $notification->sendSms(User::find(1), 'این یک پیام تستی اس ام اس می باشد');
-    // return view('welcome');
+});
+
+Route::get('/sms', function () {
+    $notification = resolve(Notification::class);
+    $notification->sendSms(User::find(1), 'این یک پیام تستی اس ام اس می باشد');
 });
