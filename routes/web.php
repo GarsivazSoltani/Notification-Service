@@ -22,12 +22,14 @@ Route::get('/', function () {
     return view('layouts.home');
 });
 
-Route::get('/email', function () {
-    $notification = resolve(Notification::class);
-    $notification->sendEmail(User::find(1), new TopicCreated);
-});
+Route::get('/notification/send-email', 'NotificationSController@email')->name('notofication.form.email');
 
-Route::get('/sms', function () {
-    $notification = resolve(Notification::class);
-    $notification->sendSms(User::find(1), 'این یک پیام تستی اس ام اس می باشد');
-});
+// Route::get('/email', function () {
+//     $notification = resolve(Notification::class);
+//     $notification->sendEmail(User::find(1), new TopicCreated);
+// });
+
+// Route::get('/sms', function () {
+//     $notification = resolve(Notification::class);
+//     $notification->sendSms(User::find(1), 'این یک پیام تستی اس ام اس می باشد');
+// });
