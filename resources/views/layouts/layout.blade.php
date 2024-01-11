@@ -14,7 +14,8 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
     <a class="navbar-brand" href="#">
         <img src="{{asset('img/logo.png')}}" width="30" height="30" class="d-inline-block align-top" alt="">
-        سون لرن</a>
+        سون لرن
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -28,17 +29,17 @@
                     اطلاع رسانی
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">ارسال ایمیل</a>
-                    <a class="dropdown-item" href="#">ارسال پیام کوتاه</a>
+                    <a class="dropdown-item" href="{{route('notification.form.email')}}">ارسال ایمیل</a>
                 </div>
             </li>
+        </ul>
     </div>
 
     <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="جستجو" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">جستجو</button>
     </form>
-</nav>
+  </nav>
 
   <div class="container">
     @yield('content')

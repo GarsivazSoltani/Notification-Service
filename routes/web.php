@@ -22,7 +22,7 @@ Route::get('/', function () {
     return view('layouts.home');
 });
 
-Route::get('/notification/send-email', 'NotificationSController@email')->name('notofication.form.email');
+Route::get('/notification/send-email', 'App\Http\Controllers\NotificationsController@email')->name('notification.form.email');
 
 // Route::get('/email', function () {
 //     $notification = resolve(Notification::class);
