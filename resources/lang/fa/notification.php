@@ -11,5 +11,8 @@ return [
     'sms_has_problem' => 'سرویس پیام کوتاه با مشکل مواجه شده است، لطفا دقایقی بعد سعی کنید.',
     'sms_text' => 'متن پیام کوتاه',
     'send_sms' => 'ارسال پیام کوتاه',
-    'user_does_not_have_phone_number' => 'کاربر انتخابی فاقد شماره تلفن می‌باشد.'
+    'user_does_not_have_phone_number' => 'کاربر انتخابی فاقد شماره تلفن می‌باشد.',
+    'userRegistered' => 'ثبت نام کاربر',
+    'topicCreated' => 'ایجاد مقاله جدید',
+    'forgetPassword' => 'فراموشی رمز عبور'
 ];
