@@ -14,4 +14,10 @@ class NotificationsController extends Controller
         $emailTypes = EmailTypes::toString();
         return view('notifications.send-email', compact('users', 'emailTypes'));
     }
+
+    public function sendEmail(Request $request)
+    {
+        dd($request);
+        // return view('welcome');
+    }
 }
