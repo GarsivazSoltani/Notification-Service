@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Services\Notification\Constants\EmailTypes;
+use App\Services\Notification\Notification;
 use Illuminate\Http\Request;
 
 class NotificationsController extends Controller
@@ -17,7 +18,19 @@ class NotificationsController extends Controller
 
     public function sendEmail(Request $request)
     {
-        dd($request);
-        // return view('welcome');
+        $request->validate([
+            'user' => 'integer | exists:users,id',
+            'email_type' => 'integer'
+        ]);
+
+        try {
+            $notification = resolve(Notification::class);
+            $mailable = EmailTypes::toMail($request->email_type);
+            $notification->sendEmail(User::find($request->user), new $mailable);
+    
+            return redirect()->back()->with('success', __('notification.email_sent_successfully'));
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('failed', __('notification.email_has_problem'));
+        }
     }
 }
