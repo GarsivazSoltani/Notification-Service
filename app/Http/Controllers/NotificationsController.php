@@ -36,6 +36,12 @@ class NotificationsController extends Controller
 
     public function sms()
     {
-        return view('notification.send-sms');
+        $users = User::all();
+        return view('notifications.send-sms', compact('users'));
+    }
+
+    public function sendSms()
+    {
+        return view('notifications.send-sms', compact('users'));
     }
 }

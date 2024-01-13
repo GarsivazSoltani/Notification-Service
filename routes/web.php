@@ -24,14 +24,5 @@ Route::get('/', function () {
 
 Route::get('/notification/send-email', 'App\Http\Controllers\NotificationsController@email')->name('notification.form.email');
 Route::post('/notification/send-email', 'App\Http\Controllers\NotificationsController@sendEmail')->name('notification.send.email');
-Route::get('/notification/sen-sms', 'App\Http\Controllers\NotificationsController@sms')->name('notification.form.email');
-
-// Route::get('/email', function () {
-//     $notification = resolve(Notification::class);
-//     $notification->sendEmail(User::find(1), new TopicCreated);
-// });
-
-// Route::get('/sms', function () {
-//     $notification = resolve(Notification::class);
-//     $notification->sendSms(User::find(1), 'این یک پیام تستی اس ام اس می باشد');
-// });
+Route::get('/notification/send-sms', 'App\Http\Controllers\NotificationsController@sms')->name('notification.form.sms');
+Route::post('/notification/send-sms', 'App\Http\Controllers\NotificationController@sendSms')->name('notification.send.sms');
