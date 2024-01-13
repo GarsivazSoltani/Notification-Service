@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Services\Notification\Constants\EmailTypes;
 use App\Services\Notification\Notification;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 
 class NotificationsController extends Controller
@@ -40,8 +41,13 @@ class NotificationsController extends Controller
         return view('notifications.send-sms', compact('users'));
     }
 
-    public function sendSms()
+    public function sendSms(Request $request)
     {
-        return view('notifications.send-sms', compact('users'));
+        $request->validate([
+            'users' => 'integer | exists:user,id',
+            'text' => 'string | max:256'
+        ]);
+        dd($request->all());
+        // return view('notifications.send-sms', compact('request'));
     }
 }
