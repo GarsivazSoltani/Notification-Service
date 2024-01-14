@@ -27,9 +27,7 @@ class NotificationsController extends Controller
         ]);
 
         try {
-            // $notification = resolve(Notification::class);
             $mailable = EmailTypes::toMail($request->email_type);
-            // $notification->sendEmail(User::find($request->user), new $mailable);
             SendEmail::dispatch(User::find($request->user), new $mailable);
     
             return redirect()->back()->with('success', __('notification.email_sent_successfully'));
