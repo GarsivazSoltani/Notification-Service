@@ -41,8 +41,8 @@ class TopicCreated extends Mailable
         return new Content(
             view: 'emails.topic-created',
             with: [
-                'full_name' => $this->first_name . ' ' . $this->last_name,
-            ],
+                'full_name' => $this->first_name . ' ' . $this->last_name
+            ]
         );
     }
 

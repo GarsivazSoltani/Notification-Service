@@ -2,9 +2,9 @@
 
 namespace App\Services\Notification\Constants;
 
-use App\Mail\ForgetPassword;
-use App\Mail\TopicCreated;
 use App\Mail\UserRegistered;
+use App\Mail\TopicCreated;
+use App\Mail\ForgetPassword;
 
 class EmailTypes
 {
